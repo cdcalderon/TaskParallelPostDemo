@@ -28,7 +28,16 @@ namespace QuoteTicker
 
         private void GetQuotesBtn_Click(object sender, RoutedEventArgs e)
         {
-            Thread.Sleep(8000);
+            getQuotesBtn.IsEnabled = false;
+            var task = Task.Run(() =>
+            {
+                Thread.Sleep(3000);
+            });
+
+            task.ContinueWith((t) =>
+            {
+                statusMessageLabel.Content = "Quotes Received Successfully";
+            });
         }
     }
 }
