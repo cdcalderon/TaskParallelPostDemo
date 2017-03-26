@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,11 @@ namespace QuoteTicker
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void GetQuotesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Thread.Sleep(8000);
         }
     }
 }
