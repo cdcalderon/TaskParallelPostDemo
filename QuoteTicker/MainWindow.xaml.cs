@@ -32,12 +32,19 @@ namespace QuoteTicker
             var task = Task.Run(() =>
             {
                 Thread.Sleep(3000);
+
+                return "Quotes Received Successfully";
             });
 
             task.ContinueWith((t) =>
             {
-                statusMessageLabel.Content = "Quotes Received Successfully";
+                Dispatcher.Invoke(() =>
+                {
+                    getQuotesBtn.IsEnabled = true;
+                    statusMessageLabel.Content = t.Result;
+                });
             });
+            
         }
     }
 }
