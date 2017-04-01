@@ -26,14 +26,13 @@ namespace QuoteTicker
             InitializeComponent();
         }
 
+
         private void GetQuotesBtn_Click(object sender, RoutedEventArgs e)
         {
             getQuotesBtn.IsEnabled = false;
             var task = Task.Run(() =>
             {
                 Thread.Sleep(3000);
-
-                return "Quotes Received Successfully";
             });
 
             task.ContinueWith((t) =>
@@ -41,10 +40,12 @@ namespace QuoteTicker
                 Dispatcher.Invoke(() =>
                 {
                     getQuotesBtn.IsEnabled = true;
-                    statusMessageLabel.Content = t.Result;
+                    statusMessageLabel.Content = "Quotes Received Successfully";
                 });
+
             });
-            
         }
+
+
     }
 }
